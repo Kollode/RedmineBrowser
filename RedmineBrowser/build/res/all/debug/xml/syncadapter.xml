@@ -1,0 +1,7 @@
+<sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accountType="de.kollode.redminebrowser"
+    android:contentAuthority="de.kollode.redminebrowser.provider"
+    android:supportsUploading="false"
+    android:userVisible="true"
+    android:allowParallelSyncs="false" />
+<!-- From: file:/C:/Users/Patrick/Dev/EclipseWorkspace/RedmineBrowserProject/RedmineBrowser/src/main/res/xml/syncadapter.xml -->

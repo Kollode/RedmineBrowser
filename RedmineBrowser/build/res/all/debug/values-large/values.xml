@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/Patrick/Dev/EclipseWorkspace/RedmineBrowserProject/RedmineBrowser/src/main/res/values-large/refs.xml -->
+    <item name="activity_project_list" type="layout">@layout/activity_project_twopane</item>
+
+</resources>

@@ -1,0 +1,9 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/project_detail_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProjectDetailActivity"
+    tools:ignore="MergeRootFrame" />
+
+<!-- From: file:/C:/Users/Patrick/Dev/EclipseWorkspace/RedmineBrowserProject/RedmineBrowser/src/main/res/layout/activity_project_detail.xml -->
