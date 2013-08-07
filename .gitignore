@@ -1,4 +1,5 @@
 lint.xml
 /bin
 /gen
-/.idea
+.idea/workspace.xml
+.idea/tasks.xml
