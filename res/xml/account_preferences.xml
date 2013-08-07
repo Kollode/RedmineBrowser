@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="General Settings" />
+
+    <PreferenceScreen
+        android:key="account_settings"
+        android:summary="Sync frequency, notifications, etc."
+        android:title="Account Settings" >
+	    <intent
+	        android:action="android.intent.action.VIEW"
+	        android:targetPackage="de.kollode.redminebrowser"
+	        android:targetClass="de.kollode.redminebrowser.SettingsActivity">
+	    </intent>
+    </PreferenceScreen>
+
+</PreferenceScreen>

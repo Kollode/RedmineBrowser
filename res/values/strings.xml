@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Redmine Browser</string>
+    <string name="title_project_detail">Project Detail</string>
+	<string name="authenticator_explanation">Please enter the connection data.</string>
+    <string name="authenticator_account_name">Account name</string>
+    <string name="authenticator_account_apikey">API Key</string>
+    <string name="authenticator_account_server">redmine.example.com</string>
+    <string name="authenticator_account_btn_add">Create</string>
+    <string name="authenticator_account_btn_cancel">Cancel</string>
+    <string name="authenticator_account_usehttps">Use HTTPS?</string>
+    <string name="authenticator_account_error_internet">Without a internet conenction, the information can not be validated. Do you want to continue?</string>
+    <string name="authenticator_account_btn_yes">Yes</string>
+	<string name="authenticator_account_btn_no">No</string>
+    
+</resources>

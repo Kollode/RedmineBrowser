@@ -1,0 +1,136 @@
+/*int offset = 0;
+				int numberOfIssues;
+				int syncedIssues = 0;
+				int limit = 100;
+				boolean loadMore = true;
+				
+				String projectId = null;
+				String assignedTo = null;
+				String dueDate = null;
+				String startDate = null;
+				
+				HashMap<String,String> syncedProjects = new HashMap<String,String>();
+				
+				SimpleDateFormat formatter =  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+				Date latestLocalIssue = null;
+				
+				Cursor currentIssues = resolver.query(Issue.buildIssuesUri(account.name), new String[] { Issue.UPDATED }, null, null, Issue.UPDATED + " DESC");
+				
+				if(currentIssues.getCount() > 0) {
+					currentIssues.moveToFirst();
+					latestLocalIssue = formatter.parse(currentIssues.getString(currentIssues.getColumnIndex(Issue.UPDATED)));
+				}
+				
+				do {
+					String restQuery = "sort=updated_on:desc&status_id=*&limit=" + limit + "&offset=" + offset + "&key=" + accMgr.getPassword(account);
+					
+					if(latestLocalIssue != null) {
+						SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd" );
+						restQuery += "&updated_on=%3E%3D" + format.format(latestLocalIssue);
+					}
+					
+					JSONObject issuesJson = getJsonFromUrl(serverUrl + "/issues.json?" + restQuery);
+					Log.d(sTag, issuesJson.toString());
+					
+					numberOfIssues = issuesJson.getInt("total_count");
+					
+					mBuilder.setProgress(numberOfIssues, syncedIssues, false);
+					mNotificationManager.notify(0, mBuilder.build());
+
+					if(numberOfIssues < limit+offset) {
+						Log.d(sTag, "Enough Issues");
+						loadMore = false;
+					}else {
+						Log.d(sTag, "More Issues");
+						offset += limit;
+					}
+					
+					JSONArray issues = issuesJson.getJSONArray("issues");
+					issues.length();
+					
+					for (int i = 0; i < issues.length(); i++) {
+						JSONObject singleIssue = issues.getJSONObject(i);
+						
+						projectId = singleIssue.getJSONObject("project").getString("id");
+						assignedTo = null;
+						dueDate = null;
+						startDate = null;
+	
+						if (singleIssue.has("assigned_to")) {
+							assignedTo = singleIssue.getJSONObject("assigned_to").getString("id");
+						}
+						
+						if (singleIssue.has("due_date")) {
+							dueDate = singleIssue.getString("due_date");
+						}
+	
+						if (singleIssue.has("start_date")) {
+							startDate = singleIssue.getString("start_date");
+						}
+						
+						if(!projectId.isEmpty() && !syncedProjects.containsKey(projectId)) {
+							JSONObject projectsJson = getJsonFromUrl(serverUrl + "/projects/"+ projectId +".json?key=" + accMgr.getPassword(account));
+							JSONObject project = projectsJson.getJSONObject("project");
+	
+							Log.d(sTag, project.toString());
+							
+							Builder projectBuilder = ContentProviderOperation.newInsert(Project.buildProjectsUri(account.name));
+									
+							 try { 
+								 projectBuilder.withValue(Project.PARENT,project.getJSONObject("parent").getInt("id"));
+							 }catch(Exception e) {
+							 
+							 }
+							 
+							 batch.add(projectBuilder
+									 .withValue(BaseColumns._ID, project.getInt("id")) 
+									 .withValue(Project.NAME, project.getString("name"))
+									 .withValue(Project.IDENTIFIER, project.getString("identifier"))
+									 .withValue(Project.UPDATED, System.currentTimeMillis())
+									 .withValue(Project.CREATED, System.currentTimeMillis())
+									 .withValue(Project.CREATED_ON, project.getString("created_on"))
+									 .withValue(Project.UPDATED_ON, project.getString("updated_on")).build());
+							 
+							 syncedProjects.put(projectId, projectId);
+						}
+						
+						
+						/*latestRemoteIssue = formatter.parse(singleIssue.getString("updated_on"));
+						//Only update the issues if the local one are older, ignore the date restriction if we have less issues then are available over the api
+						if(latestLocalIssue != null && latestLocalIssue.getTime() > latestRemoteIssue.getTime()) {
+							
+							Log.d(sTag, "Number - Local: " + currentIssues.getCount());
+							Log.d(sTag, "Number - Remote: " + numberOfIssues);
+							Log.d(sTag, "Number - Synced: " + syncedIssues);
+							
+							if((currentIssues.getCount()+syncedIssues) >= numberOfIssues) {	
+								Log.d(sTag, "Cancel Sync");
+								loadMore = false;
+								break;
+							}
+						}*/
+						
+					/*	batch.add(ContentProviderOperation.newInsert(Issue.buildIssuesUri(account.name)).withValue(Issue.UPDATED, singleIssue.getString("updated_on"))
+								.withValue(Issue.CREATED, singleIssue.getString("created_on")).withValue(BaseColumns._ID, singleIssue.getInt("id"))
+								.withValue(Issue.PROJECT_ID, projectId)
+								.withValue(Issue.TRACKER, singleIssue.getJSONObject("tracker").getString("name"))
+								.withValue(Issue.STATUS, singleIssue.getJSONObject("status").getString("name"))
+								.withValue(Issue.PRIORITY, singleIssue.getJSONObject("priority").getString("name"))
+								.withValue(Issue.AUTHOR, singleIssue.getJSONObject("author").getString("name"))
+								.withValue(Issue.ASSIGNED_TO, assignedTo)
+								.withValue(Issue.SUBJECT, singleIssue.getString("subject")).withValue(Issue.DESCRIPTION, singleIssue.getString("description"))
+								.withValue(Issue.START_DATE, startDate)
+								.withValue(Issue.DUE_DATE, dueDate)
+								.withValue(Issue.DONE_RATIO, singleIssue.getInt("done_ratio")).build());
+						
+						mBuilder.setProgress(numberOfIssues, syncedIssues++, false);
+						mNotificationManager.notify(0, mBuilder.build());
+					}
+					
+					Log.d(sTag, "Number of Issues: " + syncedIssues);
+					
+				}while(false == true && loadMore && !this.isCanceled());
+				
+				
+
+				currentIssues.close();*/
