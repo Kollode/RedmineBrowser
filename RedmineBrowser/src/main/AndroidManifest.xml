@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -82,7 +82,7 @@
 
         <activity
             android:name="de.kollode.redminebrowser.SettingsActivity"
-            android:label="@string/title_activity_settings" 
+            android:label="@string/title_activity_settings"
             android:parentActivityName="de.kollode.redminebrowser.ProjectListActivity" >
         </activity>
     </application>

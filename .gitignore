@@ -1,5 +1,11 @@
 lint.xml
-/bin
-/gen
-.idea/workspace.xml
-.idea/tasks.xml
+bin
+gen
+/.gradle
+/local.properties
+/my.properties
+/.idea/workspace.xml
+/.idea/tasks.xml
+.DS_Store
+*.apk
+build
